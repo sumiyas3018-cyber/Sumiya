@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sumiya Suchi | Sr. Technical Program Manager</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --navy:#1B2A4A;
+    --accent:#2E5FA3;
+    --accent-light:#EBF1FA;
+    --rule:#C0C8D8;
+    --black:#1A1A1A;
+    --gray:#4A4A4A;
+    --light:#F7F9FC;
+    --white:#FFFFFF;
+    --card-shadow:0 2px 16px rgba(30,50,90,0.07);
+    --radius:10px;
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--light);color:var(--black);font-size:15px;line-height:1.7;}
+
+  /* NAV */
+  nav{background:var(--navy);position:sticky;top:0;z-index:100;padding:0 2rem;}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px;}
+  .nav-logo{color:#fff;font-size:17px;font-weight:700;letter-spacing:.5px;text-decoration:none;}
+  .nav-links{display:flex;gap:1.5rem;list-style:none;}
+  .nav-links a{color:rgba(255,255,255,.78);text-decoration:none;font-size:13.5px;letter-spacing:.3px;transition:color .2s;}
+  .nav-links a:hover{color:#fff;}
+
+  /* HERO */
+  .hero{background:var(--navy);padding:5rem 2rem 4.5rem;text-align:center;}
+  .hero-avatar{width:90px;height:90px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#fff;margin:0 auto 1.5rem;}
+  .hero h1{font-size:2.4rem;font-weight:700;color:#fff;letter-spacing:.5px;}
+  .hero .title{font-size:1.05rem;color:rgba(255,255,255,.72);margin-top:.4rem;}
+  .hero .contact{margin-top:1.2rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+  .hero .contact a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13.5px;display:flex;align-items:center;gap:.35rem;transition:color .2s;}
+  .hero .contact a:hover{color:#fff;}
+  .hero-badges{margin-top:1.6rem;display:flex;justify-content:center;gap:.65rem;flex-wrap:wrap;}
+  .badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);padding:.28rem .85rem;border-radius:20px;font-size:12.5px;}
+
+  /* SECTION */
+  section{padding:3.5rem 2rem;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-title{font-size:1.25rem;font-weight:700;color:var(--navy);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.4rem;}
+  .section-rule{width:48px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:2rem;}
+  section:nth-child(even){background:var(--white);}
+
+  /* SUMMARY */
+  .summary-text{font-size:15.5px;line-height:1.85;color:var(--gray);text-align:justify;max-width:820px;}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+  .skill-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:1.1rem 1.3rem;}
+  .skill-card-title{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+  .skill-tag{background:var(--accent-light);color:var(--navy);font-size:12px;padding:.22rem .65rem;border-radius:14px;font-weight:500;}
+
+  /* EXPERIENCE */
+  .exp-timeline{position:relative;padding-left:2rem;}
+  .exp-timeline::before{content:'';position:absolute;left:0;top:6px;bottom:0;width:2px;background:var(--rule);}
+  .exp-item{position:relative;margin-bottom:2.5rem;}
+  .exp-dot{position:absolute;left:-2.45rem;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--white);box-shadow:0 0 0 2px var(--accent);}
+  .exp-header{margin-bottom:.75rem;}
+  .exp-title{font-size:1rem;font-weight:700;color:var(--navy);}
+  .exp-meta{display:flex;gap:.85rem;align-items:center;flex-wrap:wrap;margin-top:.2rem;}
+  .exp-client{font-size:14px;font-weight:600;color:var(--accent);}
+  .exp-dates{font-size:13px;color:var(--gray);font-style:italic;}
+  .exp-bullets{list-style:none;padding:0;margin-top:.6rem;}
+  .exp-bullets li{position:relative;padding-left:1.3rem;margin-bottom:.55rem;font-size:14px;line-height:1.75;color:var(--gray);text-align:justify;}
+  .exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:12px;top:3px;}
+
+  /* COMPETENCIES */
+  .comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;}
+  .comp-card{background:var(--white);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.2rem;border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .comp-card-title{font-weight:700;font-size:13.5px;color:var(--navy);margin-bottom:.3rem;}
+  .comp-card-desc{font-size:13px;color:var(--gray);}
+
+  /* FOOTER */
+  footer{background:var(--navy);padding:2rem;text-align:center;}
+  footer p{color:rgba(255,255,255,.55);font-size:13px;}
+  footer strong{color:rgba(255,255,255,.85);}
+
+  @media(max-width:600px){
+    .hero h1{font-size:1.7rem;}
+    .nav-links{display:none;}
+    .exp-timeline{padding-left:1.2rem;}
+    .exp-dot{left:-1.65rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Sumiya Suchi</a>
+    <ul class="nav-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#competencies">Competencies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-avatar">SS</div>
+  <h1>Sumiya Suchi</h1>
+  <div class="title">Sr. Technical Program Manager &nbsp;|&nbsp; HealthTech &amp; Care Delivery Systems</div>
+  <div class="contact">
+    <a href="tel:2174711078">&#128222; (217) 471-1078</a>
+    <a href="mailto:sumiya.s3018@gmail.com">&#9993; sumiya.s3018@gmail.com</a>
+    
+  </div>
+  <div class="hero-badges">
+    <span class="badge">12+ Years Experience</span>
+    <span class="badge">HealthTech &amp; Telehealth</span>
+    <span class="badge">EHR / EMR Integration</span>
+    <span class="badge">Agile &amp; SAFe</span>
+    <span class="badge">Care Delivery Systems</span>
+    <span class="badge">Executive Stakeholder Management</span>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="section-inner">
+    <div class="section-title">Professional Summary</div>
+    <div class="section-rule"></div>
+    <p class="summary-text">Technical Program Manager with over twelve years of hands-on experience running complex, high-stakes programs at the intersection of technology and healthcare. The work has largely lived inside care delivery and health system environments where the stakes are real — slow programs affect patients, not just project timelines. Extensive experience working across Clinical, Engineering, Product, and Operations teams on programs that do not come with clean requirements or simple answers: EHR integrations, telehealth platform buildouts, virtual care workflow redesigns, and enterprise-scale digital transformation efforts in regulated environments.</p>
+    <br/>
+    <p class="summary-text">What stands out is the ability to turn ambiguity into structure without slowing teams down — building roadmaps that engineering teams can actually execute, communicating program status in a way that gives executives what they need to make decisions, and holding cross-functional groups accountable in a way that keeps working relationships intact. Most of this career has been spent in fast-moving environments where priorities shift and systems are still being figured out — that is where the best work happens.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-title">Technical Skills</div>
+    <div class="section-rule"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Program &amp; Portfolio Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Jira</span><span class="skill-tag">Confluence</span><span class="skill-tag">Smartsheet</span><span class="skill-tag">MS Project</span><span class="skill-tag">Asana</span><span class="skill-tag">Portfolio Governance</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Agile &amp; Delivery Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Scrum</span><span class="skill-tag">SAFe</span><span class="skill-tag">Kanban</span><span class="skill-tag">Waterfall</span><span class="skill-tag">Hybrid Delivery</span><span class="skill-tag">Sprint Planning</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">HealthTech &amp; Clinical Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Telehealth Platforms</span><span class="skill-tag">EHR/EMR Integration</span><span class="skill-tag">HL7</span><span class="skill-tag">Clinical Workflow Design</span><span class="skill-tag">HIPAA</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Cloud &amp; Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS</span><span class="skill-tag">Azure</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Microservices</span><span class="skill-tag">API Architecture</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Data &amp; Analytics</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Tableau</span><span class="skill-tag">Power BI</span><span class="skill-tag">SQL</span><span class="skill-tag">OKR Frameworks</span><span class="skill-tag">KPI Dashboards</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Stakeholder &amp; Change Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Executive Reporting</span><span class="skill-tag">Cross-functional Alignment</span><span class="skill-tag">Change Management</span><span class="skill-tag">RACI</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Care Delivery &amp; Operations</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Virtual Care</span><span class="skill-tag">Patient Experience</span><span class="skill-tag">Care Operations</span><span class="skill-tag">Clinical Informatics</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Process &amp; Governance</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SDLC</span><span class="skill-tag">ITSM</span><span class="skill-tag">Process Design</span><span class="skill-tag">Launch Readiness</span><span class="skill-tag">Retrospectives</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-title">Professional Experience</div>
+    <div class="section-rule"></div>
+    <div class="exp-timeline">
+
+      <!-- HonorHealth -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Lead Technical Program Manager</div>
+          <div class="exp-meta">
+            <span class="exp-client">HonorHealth</span>
+            <span class="exp-dates">May 2023 – Present</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Took ownership of the full program lifecycle for a large-scale telehealth platform modernization initiative connecting care delivery workflows across eight clinical departments, building a unified roadmap that aligned Engineering, Clinical Operations, and Product stakeholders around a phased delivery plan and removed long-standing blockers in system dependency resolution.</li>
+          <li>Worked directly with senior clinical leadership and technology architects to redesign virtual care scheduling logic, translating complex clinical requirement documents into actionable sprint plans that Engineering teams could execute against within a two-week cadence while maintaining compliance with care quality standards established by the medical operations committee.</li>
+          <li>Established a cross-functional OKR tracking system tying individual technical program milestones to patient experience metrics, giving executive sponsors real-time visibility into how platform changes were affecting care access rates, provider utilization, and appointment completion data across the telehealth delivery system.</li>
+          <li>Ran weekly steering committee sessions for five concurrent technical programs, preparing structured status updates for VP-level audiences that distilled technical risks, dependency chains, and delivery timeline changes into clear decision points without requiring stakeholders to interpret engineering-level detail.</li>
+          <li>Led the integration planning effort for a third-party EHR connectivity project requiring coordination of API design reviews, data mapping sessions, and security validation across three separate vendor teams, maintaining a consolidated risk register and escalation log that kept the program on schedule through a complex multi-vendor environment.</li>
+          <li>Defined launch readiness criteria and go-live checklists for a patient-facing telehealth portal release, working with QA, Clinical, and Customer Experience teams to validate functional coverage across device types, browser environments, and clinical use cases before authorizing production deployment.</li>
+          <li>Designed and facilitated structured retrospective processes for major program milestones, capturing outcome data from post-launch reviews and feeding findings directly back into program planning templates to improve scoping accuracy and reduce scope creep on subsequent initiatives across the Care Experience organization.</li>
+          <li>Built and maintained a comprehensive program dependency map covering twelve interconnected technical initiatives, tracking inter-team blockers through Jira and Confluence and flagging critical path risks to engineering leadership in advance of each sprint boundary to preserve delivery momentum.</li>
+          <li>Negotiated scope boundaries and delivery sequencing with Product Management and Engineering leadership during a resource-constrained quarter, facilitating structured tradeoff sessions that resulted in a reprioritized roadmap protecting the highest-impact patient experience features while deferring non-critical technical enhancements.</li>
+          <li>Coordinated readiness planning across Clinical, IT Security, and Infrastructure teams for a HIPAA-compliant video consultation feature rollout, managing a pre-launch certification checklist that verified configuration, access control, audit logging, and provider training completion before the feature was enabled for patient use.</li>
+          <li>Maintained close alignment with the R&amp;D team on experimental care delivery features under evaluation, acting as the coordination point between research pilots and production engineering to translate learnings from controlled experiments into structured feature requirements for platform integration.</li>
+          <li>Served as the primary cross-functional communication anchor for the Care Experience organization in enterprise-wide technical governance forums, representing program status, raising dependency conflicts with adjacent platform teams, and influencing architectural decisions affecting the long-term scalability of the telehealth delivery system.</li>
+          <li>Developed a standardized program intake and scoping process for the Care Experience engineering organization, creating reusable templates for technical requirement gathering, stakeholder alignment sessions, and delivery estimation that reduced average program initiation time significantly.</li>
+          <li>Partnered with the data and analytics team to define measurement frameworks for care delivery system performance, identifying the specific platform events and clinical interaction points that needed to be instrumented in order to generate the reporting needed for executive-level program reviews.</li>
+          <li>Partnered with care operations to identify and eliminate manual handoff steps in the virtual visit workflow, documenting existing process gaps through structured discovery sessions with frontline care coordinators and building a revised workflow model that reduced unnecessary touchpoints between clinical and administrative systems.</li>
+        </ul>
+      </div>
+
+      <!-- Grady Health System -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Lead Technical Program Manager</div>
+          <div class="exp-meta">
+            <span class="exp-client">Grady Health System</span>
+            <span class="exp-dates">September 2020 – April 2023</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed a multi-year digital transformation initiative across the outpatient care network involving replacement of legacy scheduling infrastructure with a cloud-native platform built on Azure microservices, coordinating delivery across eight product squads and maintaining executive alignment through monthly steering committee presentations tying platform progress to patient throughput goals.</li>
+          <li>Defined the technical program structure for an EHR modernization engagement spanning clinical documentation, order management, and results delivery workflows, working with physicians, clinical informaticists, and platform engineers to translate clinical care requirements into systems architecture decisions and phased delivery milestones.</li>
+          <li>Built a risk and dependency tracking model mapping over forty technical interdependencies across care delivery, revenue cycle, and infrastructure teams, conducting weekly dependency review sessions with engineering leads and escalating blockers proactively to prevent cross-team delays from accumulating on the critical delivery path.</li>
+          <li>Designed the organizational change management plan for a virtual care platform launch targeting the ambulatory population, developing communication cadences, provider onboarding timelines, and operational readiness checklists that addressed both the technical and behavioral adoption requirements needed to sustain platform utilization after go-live.</li>
+          <li>Partnered with security and compliance teams to integrate HIPAA technical safeguard requirements into the engineering delivery process, building compliance checkpoints into the sprint gate criteria so that access control, audit trail, and encryption validation were addressed within the normal development cadence rather than deferred to pre-launch review.</li>
+          <li>Stood up an enterprise Agile program management practice within the care delivery technology division, coaching eight product teams on SAFe ceremonies, refining backlog grooming processes, and establishing consistent definitions of done that allowed leadership to compare delivery velocity and quality metrics across squads.</li>
+          <li>Created a program performance reporting framework aggregating delivery metrics, clinical adoption data, and system uptime statistics into a unified dashboard reviewed by the CIO and clinical leadership on a biweekly cadence, giving technology leadership a consolidated view of program health across the digital care portfolio.</li>
+          <li>Coordinated the technical planning for a care gap closure program using analytics-driven patient outreach to connect at-risk populations with preventive care services, working with data engineers and clinical operations to design the platform logic for patient identification, outreach sequencing, and appointment conversion tracking.</li>
+          <li>Facilitated structured scope management sessions during a mid-program pivot driven by changes in clinical operational requirements, rebuilding the delivery roadmap with engineering and product teams within a compressed timeline and communicating the revised scope and impact to executive sponsors with full transparency on timeline and resource implications.</li>
+          <li>Led cross-functional planning for the technical infrastructure supporting a rapid telehealth expansion during a period of elevated care demand, coordinating platform capacity increases, provider onboarding workflows, and patient access configuration changes across Engineering, Clinical, and IT Operations teams within an accelerated delivery window.</li>
+          <li>Managed the vendor relationship and delivery oversight for a third-party patient engagement platform integration, defining API contract requirements with the vendor technical team, establishing a shared testing protocol, and maintaining a joint escalation process that kept integration delivery on schedule through three rounds of requirement revisions.</li>
+          <li>Developed a detailed operational handoff process for programs transitioning from active development to steady-state operations, creating runbooks, escalation trees, and support SLA documentation that allowed clinical operations teams to manage platform issues independently after engineering teams completed their delivery engagement.</li>
+          <li>Negotiated resource allocation for a parallel platform development effort during a period of organizational restructuring, facilitating capacity planning sessions with Engineering Directors and Product VPs resulting in a shared resourcing model allowing two major programs to proceed concurrently without compromising delivery timelines on either initiative.</li>
+          <li>Tracked and reported on program-level OKR attainment across the care delivery technology portfolio, working with analytics and clinical operations to validate outcome measurement methodology and presenting quarterly results to health system leadership with narrative context explaining technical and operational factors behind each metric.</li>
+          <li>Oversaw integration testing coordination for a patient notification system connecting clinical event triggers in the EHR with outbound SMS and portal messaging workflows, managing test scenario coverage across clinical event types and validating end-to-end message delivery with the vendor and internal infrastructure teams.</li>
+        </ul>
+      </div>
+
+      <!-- Franciscan Alliance -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Senior Technical Program Manager</div>
+          <div class="exp-meta">
+            <span class="exp-client">Franciscan Alliance</span>
+            <span class="exp-dates">January 2018 – August 2020</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Led end-to-end program delivery for a network-wide clinical communication platform implementation replacing fragmented paging and messaging systems with a unified secure messaging solution integrated into the EHR, managing cross-site deployment sequencing across eleven hospital locations and coordinating training delivery with clinical education teams at each facility.</li>
+          <li>Developed the technical roadmap for a patient portal modernization initiative introducing online scheduling, lab result access, and care plan visibility features to a patient population of over two hundred thousand, partnering with UX, Engineering, and Clinical Informatics to align feature priorities with both technical feasibility and clinical workflow compatibility.</li>
+          <li>Managed program governance for a multi-facility revenue cycle optimization project requiring close coordination between Finance, Clinical, and IT teams, establishing a steering committee cadence, decision log, and RACI matrix that gave all stakeholders clear accountability for each workstream and reduced decision turnaround time significantly.</li>
+          <li>Built and maintained the integrated master schedule for a clinical data warehouse implementation consolidating patient records, clinical outcomes data, and operational metrics from eight source systems into a centralized analytics platform, tracking data migration progress and coordinating ETL validation sessions with the data engineering and clinical analytics teams.</li>
+          <li>Worked with infrastructure and security teams to define the network architecture and access control model for a cloud migration of care delivery applications to AWS, translating clinical data residency requirements and HIPAA security rule obligations into specific infrastructure configuration standards used as acceptance criteria during the migration.</li>
+          <li>Coordinated the cross-functional planning for a care management program technology buildout connecting case management, social determinants screening, and care coordination workflows into a single platform view, managing requirements gathering sessions with clinical staff and translating workflow documentation into structured user stories for the engineering backlog.</li>
+          <li>Maintained executive reporting for a portfolio of seven simultaneous clinical technology programs, producing monthly briefings for the VP of Clinical Informatics and CIO that summarized delivery progress, financial burn rate against budget, and risk status in a format supporting informed prioritization decisions at the portfolio level.</li>
+          <li>Partnered with clinical operations leadership to conduct structured post-implementation reviews for major platform releases, gathering adoption data, documenting workflow friction points identified by clinical staff, and converting findings into a prioritized enhancement backlog feeding directly into the next program planning cycle.</li>
+          <li>Established the change management framework for a clinical documentation workflow redesign requiring physicians and nursing staff across multiple specialties to adopt new charting processes alongside the technology change, coordinating with clinical champions, education teams, and department leadership to sequence training and communication activities around go-live dates.</li>
+          <li>Managed a third-party integration program connecting pharmacy management systems with the inpatient clinical workflow platform, defining data exchange requirements, coordinating HL7 interface build and testing activities with the vendor and internal integration engine team, and managing go-live validation with pharmacy operations and clinical informatics staff.</li>
+        </ul>
+      </div>
+
+      <!-- Ensemble Health Partners -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Senior Technical Program Manager</div>
+          <div class="exp-meta">
+            <span class="exp-client">Ensemble Health Partners</span>
+            <span class="exp-dates">March 2015 – December 2017</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed technical program delivery for a revenue cycle automation initiative using workflow orchestration tools to reduce manual claim processing steps across billing operations, coordinating development sprints with Engineering, working with clinical coders to validate business rules, and tracking production deployment outcomes against pre-defined throughput improvement targets.</li>
+          <li>Served as the primary program manager for a cross-system patient financial experience initiative redesigning the billing statement workflow, online payment interface, and financial counseling intake process, coordinating with Patient Access, IT, and Finance teams to deliver a cohesive patient-facing experience aligned with regulatory billing disclosure requirements.</li>
+          <li>Built a structured project intake and prioritization process for the technology team, creating a scoring model based on strategic impact, technical feasibility, and resource requirements that gave leadership a consistent framework for comparing program requests and allocating development capacity across competing business priorities.</li>
+          <li>Coordinated a large-scale data migration program moving historical patient financial records from a legacy revenue cycle platform to a modern cloud-based system, managing the data validation process with Finance and IT teams, tracking data quality metrics across migration batches, and maintaining a rollback plan for each migration phase.</li>
+          <li>Managed stakeholder alignment and communication for a payer contract management system implementation, facilitating requirements sessions with managed care, finance, and IT teams, maintaining a consolidated requirement traceability matrix, and producing weekly status reports giving executive leadership clear visibility into delivery progress and open decision points.</li>
+          <li>Developed the technical implementation plan for an analytics platform designed to track denial management performance, working with data engineers to define the reporting schema and with revenue cycle leadership to validate that the output metrics aligned with the operational KPIs used to manage the billing and coding teams.</li>
+          <li>Coordinated integration testing for a clearinghouse connectivity upgrade affecting electronic claim submission and remittance processing workflows, building a test scenario matrix with the revenue cycle operations team, managing defect triage sessions with Engineering, and validating end-to-end claim flow behavior before authorizing the production cutover.</li>
+          <li>Facilitated cross-functional planning sessions for a patient access technology refresh introducing automated eligibility verification and prior authorization workflows, managing the phased rollout across patient access teams and coordinating training delivery in parallel with technical deployment to maintain operational continuity during the transition period.</li>
+          <li>Tracked program financial performance against approved budgets for a portfolio of revenue cycle technology initiatives, producing monthly variance analysis reports for Finance and IT leadership and maintaining a forward-looking resource plan reflecting updated delivery timelines and any scope changes approved through the formal change control process.</li>
+          <li>Partnered with compliance and legal teams to integrate regulatory requirement checkpoints into the program delivery lifecycle for revenue cycle technology initiatives, creating a compliance review gate in the project governance process ensuring all billing-related technology changes were reviewed against current CMS guidelines before production deployment.</li>
+        </ul>
+      </div>
+
+      <!-- Medica -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Technical Program Manager</div>
+          <div class="exp-meta">
+            <span class="exp-client">Medica Health Plan</span>
+            <span class="exp-dates">November 2013 – February 2015</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed delivery of a member-facing digital health portal implementation providing plan members with access to benefits information, claims history, provider search, and care management referral workflows, coordinating cross-functional planning sessions with IT, Clinical Programs, and Member Services to align technical scope with member experience objectives and regulatory member communication requirements.</li>
+          <li>Built the program governance structure for a care management platform migration moving clinical case management workflows from a legacy system to a cloud-based platform, defining the data migration approach, managing UAT planning with clinical staff, and producing executive status reports for the VP of Clinical Operations throughout the implementation lifecycle.</li>
+          <li>Coordinated technical requirements gathering and vendor management for an integration program connecting the health plan's utilization management system with provider portal workflows, facilitating joint planning sessions with internal IT and the vendor delivery team, managing a shared risk log, and tracking open items through weekly joint status meetings.</li>
+          <li>Maintained program planning documentation and delivery tracking for a portfolio of member experience technology initiatives, preparing biweekly briefing materials for technology leadership that summarized program status, budget utilization, and active risks in a consistent format aligned with the health plan's portfolio governance reporting standards.</li>
+          <li>Worked with clinical programs and IT teams to document the functional and technical requirements for a population health reporting capability aggregating member claims, clinical encounters, and care management activity data into a standardized quality measure reporting output, managing requirement traceability and coordinating data validation sessions with the analytics team.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="competencies">
+  <div class="section-inner">
+    <div class="section-title">Core Competencies</div>
+    <div class="section-rule"></div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-card-title">Engineering Roadmap Coordination</div>
+        <div class="comp-card-desc">Translating strategic vision into phased, executable engineering roadmaps across multi-squad, cross-functional environments with real clinical and operational constraints.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-title">Cross-functional Program Delivery</div>
+        <div class="comp-card-desc">Running end-to-end technical programs across Clinical, Engineering, Product, Operations, and R&amp;D with full accountability from scoping through go-live and retrospective.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-title">Executive Stakeholder Management</div>
+        <div class="comp-card-desc">Distilling technical complexity into clear executive narratives, leading steering committee sessions, and influencing strategic tradeoffs at VP and C-suite level.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-title">OKR &amp; Metrics Frameworks</div>
+        <div class="comp-card-desc">Building measurement systems that tie program milestones directly to patient experience, operational efficiency, and system scalability outcomes for leadership reporting.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-title">Clinical Workflow &amp; System Design</div>
+        <div class="comp-card-desc">Deep familiarity with EHR integrations, virtual care workflows, HL7 interfaces, HIPAA compliance, and clinical operations across acute and ambulatory care settings.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-title">Change Management &amp; Process Design</div>
+        <div class="comp-card-desc">Designing and executing organizational change programs for clinical and technical transformations, including communication planning, training sequencing, and adoption tracking.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-title">Dependency &amp; Risk Management</div>
+        <div class="comp-card-desc">Mapping complex cross-team dependency chains, maintaining consolidated risk registers, and escalating blockers before they reach the critical path.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-title">Vendor &amp; Integration Management</div>
+        <div class="comp-card-desc">Managing third-party vendors through API integration programs, shared testing protocols, and joint escalation processes in multi-vendor healthcare technology environments.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-title">Contact</div>
+    <div class="section-rule"></div>
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+      <div style="background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:1.2rem 1.5rem;min-width:220px;">
+        <div style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;">Phone</div>
+        <div style="font-size:15px;color:var(--navy);font-weight:600;">(217) 471-1078</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:1.2rem 1.5rem;min-width:220px;">
+        <div style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;">Email</div>
+        <div style="font-size:15px;color:var(--navy);font-weight:600;">sumiya.s3018@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Sumiya Suchi</strong> &nbsp;&middot;&nbsp; Sr. Technical Program Manager &nbsp;&middot;&nbsp; HealthTech &amp; Care Delivery Systems</p>
+  <p style="margin-top:.5rem;">&#169; 2025 Sumiya Suchi. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
